@@ -1,12 +1,17 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db")
+const bodyParser = require('body-parser');
 
 const app = express();
 
 dotenv.config()
 
 connectDB();
+
+app.use(bodyParser.json());
+
+app.use("/api/auth", require('./routes/authRuta'));
 
 app.get("/", (req, res) =>{
     res.send({
