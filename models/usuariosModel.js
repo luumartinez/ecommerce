@@ -32,8 +32,8 @@ const usuarioSchema = new mongoose.Schema(
       trim: true,
     },
     rol: {
-      type: Number,
-      default: 0
+      type: String,
+      default: "usuario"
     }
   },
   {timestamps: true, versionKey: false},

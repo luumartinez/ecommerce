@@ -2,7 +2,7 @@ const UsuarioModel = require("../models/usuariosModel");
 const { hashPass, compararPassword } = require("../helpers/authHelper");
 const JWT = require("jsonwebtoken");
 
-const registroController = async (req, res) => {
+const registro = async (req, res) => {
   try {
     const { nombre, apellido, email, password } = req.body;
     //   console.log(req.body)
@@ -53,35 +53,40 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-      res.status(404).json("Error en el mail o password");
-    }
-
     const usuario = await UsuarioModel.findOne({ email });
 
     if (!usuario) {
-      res.status(404).json("Email no encontrado");
+      return res.status(404).json("Email y/o contraseña incorrectos");
     }
 
     const match = await compararPassword(password, usuario.password);
     if (!match) {
-      res.status(404).json("Contraseña no encontrada");
+      return res.status(404).json("Email y/o contraseña incorrectos");
     }
 
     const token = await JWT.sign({ _id: usuario._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-    res.status(200).send({
+    return res.status(200).send({
       message: "logueado correctamente",
       token,
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json(`Error 500 ${error}`);
+    return res.status(500).json(`Error 500 ${error}`);
+  }
+};
+
+const rutaProtegida = (req, res) =>{
+  try {
+    res.send("ruta protegida")   
+  } catch (error) {
+    res.send({success: false, message:"no se pudo autorizar"})
   }
 };
 
 module.exports = {
-  registroController,
+  registro,
   login,
+  rutaProtegida
 };
