@@ -1,0 +1,42 @@
+.pagNosotros{
+    margin: 1vh;
+    padding: 1vh;
+    min-height: 70vh;
+}
+
+.contenedorTitNosotros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titNosotros{
+ font-size: 5.5vh;
+ text-transform: uppercase;
+ line-height: 6vh;
+}
+
+.mainNos{
+    display: flex;
+}
+
+.contenedorFoto{
+    width: 50%;
+    justify-content: start;
+}
+.fotoNosotros{
+    width: 100%;
+}
+
+.contenedorTextoNos{
+    width: 50%;
+    margin-left: 1.5vh;
+    align-items: end;
+    justify-content: center;
+}
+
+.textoNos{
+    font-size: 3.5vh;
+    text-align: center;
+    width: 95%;
+}

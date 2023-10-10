@@ -1,0 +1,33 @@
+
+.contenedorImgError{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.contenedorTextoError{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.tituloError{
+    font-size: 20vh;
+    line-height: 15vh;
+}
+
+.textoError{
+    font-size: 8vh;
+    line-height: 8vh;
+}
+
+.contenedorBotonError{
+    display: flex;
+    justify-content: center;
+}
+
+.botonError{
+    width: 40%;
+    border-radius: 5px;
+    border: 2px solid grey;
+}
