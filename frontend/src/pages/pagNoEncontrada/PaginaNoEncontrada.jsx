@@ -17,11 +17,11 @@ const PaginaNoEncontrada = () => {
           <div className="contenedorTextoError">
             <h1 className="textoError">Página no encontrada</h1>
           </div>
-        </div>
         <div className="contenedorBotonError">
          <button className="botonError mb-3" onClick={(e) => {window.location.href="/"}}>
             VOLVER
          </button>
+        </div>
         </div>
       </Layout>
     </>

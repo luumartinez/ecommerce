@@ -1,4 +1,6 @@
-
+.pagError{
+    background: linear-gradient(to bottom, lightblue, rgb(175, 175, 175))
+}
 .contenedorImgError{
     display: flex;
     justify-content: center;

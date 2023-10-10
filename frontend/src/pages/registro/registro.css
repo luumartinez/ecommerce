@@ -2,6 +2,39 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70vh;
+    min-height: 70vh;
     flex-direction: column;
+    background: linear-gradient(to bottom, lightblue, rgb(175, 175, 175))
+}
+
+.contenedorRegistro{
+    width: 40%;
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-control{
+    background-color: rgb(222, 222, 222);
+    border:none;
+    color: grey;
+}
+
+.form-control:focus{
+    box-shadow: 2px 2px 2px rgb(132, 34, 150);
+}
+
+.botonRegistrar{
+    background: rgb(170, 43, 193);
+    width: 30%;
+    border-radius: 5px;
+    border:none;
+    line-height: 5vh;
+    color: lightblue;
+}
+
+.botonRegistrar:hover{
+    background-color: rgb(132, 34, 150);
+    color: grey;
+    transition: 0.5s ease-in-out;
 }

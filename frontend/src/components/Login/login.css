@@ -1,0 +1,19 @@
+.modalLogin{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.botonLogin{
+    background: rgb(170, 43, 193);
+    width: 30%;
+    border-radius: 5px;
+    border:none;
+    line-height: 4vh;
+    color: lightblue;
+}
+
+.botonLogin:hover{
+    background-color: rgb(132, 34, 150);
+    color: grey;
+    transition: 0.5s ease-in-out;
+}

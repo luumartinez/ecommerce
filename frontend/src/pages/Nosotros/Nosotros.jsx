@@ -8,7 +8,7 @@ const Nosotros = () => {
       <Layout>
         <div className="pagNosotros">
           <div className="contenedorTitNosotros">
-            <h1 className="titNosotros">Sobre nosotros</h1>
+            <h1 className="titNosotros mt-3">Sobre nosotros</h1>
           </div>
           <main className="mainNos">
             <div className="contenedorFoto">

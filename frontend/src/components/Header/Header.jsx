@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
-import imgLogo from "../../img/tienda-online.png"
-import "./header.css"
+import imgLogo from "../../img/tienda-online.png";
+import "./header.css";
+import Login from "../Login/Login";
 
 const Header = () => {
   return (
@@ -19,9 +20,9 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <Link className= "navbar-brand" to="/">
-           <img className="imgLogo" src={imgLogo} /> ECOMMERCE
-          </Link>
+            <Link className="navbar-brand" to="/">
+              <img className="imgLogo" src={imgLogo} /> ECOMMERCE
+            </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink className="nav-link" aria-current="page" to="/">
@@ -32,6 +33,16 @@ const Header = () => {
                 <NavLink className="nav-link" to="/registro">
                   Registro
                 </NavLink>
+              </li>
+              <li className="nav-item">
+                <div
+                  type="button"
+                  className="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Log In
+                </div>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/categoria">
@@ -89,6 +100,32 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content modalLogin">
+            {/* <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                Iniciar sesión
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div> */}
+            <div className="modal-body">
+              <Login />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
