@@ -1,0 +1,22 @@
+.imgLogo{
+    width: 8vh;
+}
+
+
+.navbar{
+    font-size: 3vh;
+    text-transform: uppercase;
+    background-color: rgb(224, 219, 219) !important;
+    box-shadow: 0 10px 6px -6px grey;
+    /* --webkit-box-shadow: 0 10px 6px -6px grey; */
+    border-bottom: solid rgba(128, 128, 128, 0.82) !important;
+}
+
+.active{
+    border-bottom: 2px solid black;
+}
+
+.navbar-brand{
+    font-size: 4vh;
+    letter-spacing: 5px;
+}

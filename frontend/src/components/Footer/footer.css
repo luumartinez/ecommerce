@@ -1,0 +1,16 @@
+.contenedorFooter{
+    background-color: gray;
+}
+
+.linksFooter{
+    text-decoration: none;
+    color:white;
+    font-size: 3vh;
+    text-transform: uppercase ;
+    padding: 10px;
+}
+
+.linksFooter:hover{
+    color:blanchedalmond;
+    border-bottom: 1px solid blanchedalmond;
+}
