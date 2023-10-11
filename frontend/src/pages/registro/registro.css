@@ -38,3 +38,18 @@
     color: grey;
     transition: 0.5s ease-in-out;
 }
+
+.mjeErrorReg{
+    font-size: small;
+      color: rgb(203, 1, 1);
+      display: flex;
+      position: absolute;
+}
+
+.error-icon {
+    background-image: url('../../img/cerrar.png');
+    background-size: 15px 15px; /* Tamaño del ícono */
+    background-position: 515px; /* Posición del ícono */
+    background-repeat: no-repeat;
+    border: 1px solid red;
+}

@@ -25,7 +25,6 @@ const Login = () => {
             type="password"
             name="password"
             className="form-control"
-            id="exampleInputPassword"
             placeholder="Contraseña"
             required
           />
