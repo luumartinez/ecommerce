@@ -100,7 +100,7 @@ const Registro = () => {
         Swal.fire(
           {
             title: "¡Listo!",
-            text: "Registro realizaco con éxito",
+            text: "Registro realizado con éxito",
             icon: "success",
             showConfirmButton: false,
             background: "#d7addf",
