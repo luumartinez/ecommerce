@@ -21,9 +21,9 @@ const registro = async (req, res) => {
 
     const usuarioRepetido = await UsuarioModel.findOne({ email });
     if (usuarioRepetido) {
-      return res.status(200).send({
-        success: true,
-        message: "Usuario ya registrado",
+      return res.status(409).send({
+        success: false,
+        message: "Email ya registrado",
       });
     }
     const hashPassword = await hashPass(password);
@@ -41,11 +41,8 @@ const registro = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).send({
-      success: false,
-      message: "error en registro",
-      error,
-    });
+    res.status(404).json("error 404")
+    res.status(500).json("error del servidor")
   }
 };
 
@@ -85,8 +82,18 @@ const rutaProtegida = (req, res) =>{
   }
 };
 
+const verUsuarios = async (req, res) =>{
+  try {
+    const usuarios = await UsuarioModel.find()
+    res.json(usuarios)
+  } catch (error) {
+    res.status(400).send({message:"error400"})
+  }
+};
+
 module.exports = {
   registro,
   login,
-  rutaProtegida
+  rutaProtegida,
+  verUsuarios
 };

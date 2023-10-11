@@ -7,6 +7,7 @@ const router = express.Router()
 router.post('/registro', registro)
 router.post('/login', login)
 
+// router.get('/usuarios', verUsuarios)
 router.get('/usuarioReq', usuarioRequerido, rutasAdmin, rutaProtegida)
 
 module.exports = router

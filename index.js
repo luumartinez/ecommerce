@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db")
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 const app = express();
 
@@ -9,9 +10,13 @@ dotenv.config()
 
 connectDB();
 
+app.use(cors())
+
 app.use(bodyParser.json());
 
-app.use("/api/auth", require('./routes/authRuta'));
+app.use("/api", require('./routes/authRuta'));
+
+// app.use("/api", require('./routes/rutasUsuarios'));
 
 app.get("/", (req, res) =>{
     res.send({
