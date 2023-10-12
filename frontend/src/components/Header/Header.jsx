@@ -2,8 +2,14 @@ import { NavLink, Link } from "react-router-dom";
 import imgLogo from "../../img/tienda-online.png";
 import "./header.css";
 import Login from "../Login/Login";
+import { useContext } from "react";
+import { ProveedorUsuarios } from "../../context/UsuariosContext";
 
 const Header = () => {
+ const { logOut } = useContext(ProveedorUsuarios)
+
+  const usuarioIngresado = JSON.parse(localStorage.getItem("usuario"));
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -24,36 +30,61 @@ const Header = () => {
               <img className="imgLogo" src={imgLogo} /> ECOMMERCE
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/">
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/registro">
-                  Registro
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <div
-                  type="button"
-                  className="nav-link"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  Log In
-                </div>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/categoria">
-                  Categoria
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/carrito">
-                  Carrito (0)
-                </NavLink>
-              </li>
+              {usuarioIngresado ? (
+                <>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" aria-current="page" to="/">
+                      Home
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/categoria">
+                      Categoria
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/carrito">
+                      Carrito (0)
+                    </NavLink>
+                  </li>
+                  <li className="nav-item" onClick={logOut}>
+                  <div
+                      type="button"
+                      className="nav-link"
+                    >
+                      Log Out
+                    </div>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" aria-current="page" to="/">
+                      Home
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/categoria">
+                      Categoria
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/registro">
+                      Registro
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <div
+                      type="button"
+                      className="nav-link"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Log In
+                    </div>
+                  </li>
+                </>
+              )}
               {/* <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -109,17 +140,6 @@ const Header = () => {
       >
         <div className="modal-dialog">
           <div className="modal-content modalLogin">
-            {/* <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Iniciar sesión
-              </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div> */}
             <div className="modal-body">
               <Login />
             </div>

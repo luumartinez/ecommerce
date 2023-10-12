@@ -1,7 +1,9 @@
-import { useContext } from "react";
+
 import Layout from "../../components/Layout/Layout";
 
+
 const Inicio = () => {
+
   return (
     <>
       <Layout title={"Ecommerce online"}>
