@@ -5,8 +5,20 @@ import Swal from "sweetalert2";
 export const ProveedorUsuarios = createContext();
 
 const UsuariosContext = ({ children }) => {
-  const [usuarios, setUsuarios] = useState([]);
+  const [usuarios, setUsuarios] = useState([])
 
+  axios.defaults.headers.common['Authorization'] = localStorage.getItem("token")
+
+  // useEffect(() => {
+  //   const datos = localStorage.getItem("usuarios");
+  //   if (datos){
+  //     const parseDatos = JSON.parse(datos);
+  //     setUsuarios({
+  //       ...usuarios, usuario: parseDatos.usuario, token:parseDatos.token
+  //     })
+  //   }
+  //   console.log(usuarios)
+  // }, []);
   const logOut = () =>{
     Swal.fire({
       icon: "warning",
@@ -37,9 +49,9 @@ const UsuariosContext = ({ children }) => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    listaUsuarios();
-  }, []);
+
+
+
   return (
     <>
       <ProveedorUsuarios.Provider value={{ listaUsuarios, usuarios, logOut }}>

@@ -1,18 +1,14 @@
 import axios from "axios";
 import "./login.css";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
-import { ProveedorUsuarios } from "../../context/UsuariosContext";
 
 const Login = () => {
-  const { usuarios } = useContext(ProveedorUsuarios);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [logueado, setLogueado] = useState("")
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post("http://localhost:8080/api/login", {
         email,
@@ -25,7 +21,6 @@ const Login = () => {
 
         localStorage.setItem("token", tokenIn);
         localStorage.setItem("usuario", JSON.stringify(usuarioIn));
-        // setLogueado(usuarioIn)
 
         Swal.fire(
           {
@@ -36,8 +31,8 @@ const Login = () => {
             color: "grey",
           },
           setTimeout(() => {
-            window.location.href = "/";
-          }, 1200)
+              window.location.href = "/";
+            }, 1200)
         );
       }
     } catch (error) {

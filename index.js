@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.use("/api", require('./routes/authRuta'));
 
-// app.use("/api", require('./routes/rutasUsuarios'));
+app.use("/api", require('./routes/rutasUsuarios'));
 
 app.get("/", (req, res) =>{
     res.send({

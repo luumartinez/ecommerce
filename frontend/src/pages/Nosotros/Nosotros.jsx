@@ -5,7 +5,7 @@ import "./nosotros.css";
 const Nosotros = () => {
   return (
     <>
-      <Layout>
+      <Layout  title={"Nostros - ecommerce"}>
         <div className="pagNosotros">
           <div className="contenedorTitNosotros">
             <h1 className="titNosotros mt-3">Sobre nosotros</h1>

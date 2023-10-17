@@ -67,6 +67,7 @@ const login = async (req, res) => {
     return res.status(200).send({
       message: "logueado correctamente",
       token,
+      usuario
     });
   } catch (error) {
     console.log(error);
@@ -87,7 +88,7 @@ const verUsuarios = async (req, res) =>{
     const usuarios = await UsuarioModel.find()
     res.json(usuarios)
   } catch (error) {
-    res.status(400).send({message:"error400"})
+    res.status(404).send({message:"error404"})
   }
 };
 
