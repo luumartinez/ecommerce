@@ -67,7 +67,13 @@ const login = async (req, res) => {
     return res.status(200).send({
       message: "logueado correctamente",
       token,
-      usuario
+      usuario:{
+        _id: usuario._id,
+        nombre: usuario.nombre,
+        apellido: usuario.apellido,
+        email: usuario.email,
+        rol: usuario.rol
+      }
     });
   } catch (error) {
     console.log(error);

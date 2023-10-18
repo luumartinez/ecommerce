@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import Swal from "sweetalert2";
 
 export const ProveedorUsuarios = createContext();
@@ -7,18 +7,37 @@ export const ProveedorUsuarios = createContext();
 const UsuariosContext = ({ children }) => {
   const [usuarios, setUsuarios] = useState([])
 
-  axios.defaults.headers.common['Authorization'] = localStorage.getItem("token")
+  const [autorizacion, setAutorizacion] = useState({
+    usuario: null,
+    token:""
+  });
+
+  
+  useEffect(() => {
+    const datos = localStorage.getItem("autorizacion");
+    if (datos){
+      const parseDatos = JSON.parse(datos);
+      setAutorizacion({
+        ...autorizacion, usuario: parseDatos.usuario, token:parseDatos.token
+      })
+    }
+  }, []);
+
 
   // useEffect(() => {
-  //   const datos = localStorage.getItem("usuarios");
-  //   if (datos){
-  //     const parseDatos = JSON.parse(datos);
-  //     setUsuarios({
-  //       ...usuarios, usuario: parseDatos.usuario, token:parseDatos.token
+  //   const usuarioIn = JSON.parse(localStorage.getItem("usuario"));
+  //   const tokenIn = localStorage.getItem("token");
+  //   if (usuarioIn){
+  //     setAutorizacion({
+  //       ...autorizacion, usuario: usuarioIn, token: tokenIn
   //     })
   //   }
-  //   console.log(usuarios)
+    
   // }, []);
+  
+  axios.defaults.headers.common['Authorization'] = autorizacion?.token
+  
+  
   const logOut = () =>{
     Swal.fire({
       icon: "warning",
@@ -32,8 +51,11 @@ const UsuariosContext = ({ children }) => {
       color: "grey",
     }).then((result) => {
       if (result.isConfirmed) {
-        localStorage.removeItem("usuario");
-        localStorage.removeItem("token");
+        setAutorizacion({
+          usuario: null,
+          token:""
+        })
+        localStorage.removeItem("autorizacion");
         window.location.href = "/";
       } else if (result.isDenied) {
         return;
@@ -54,7 +76,7 @@ const UsuariosContext = ({ children }) => {
 
   return (
     <>
-      <ProveedorUsuarios.Provider value={{ listaUsuarios, usuarios, logOut }}>
+      <ProveedorUsuarios.Provider value={{ listaUsuarios, usuarios, logOut, autorizacion, setAutorizacion }}>
         {children}
       </ProveedorUsuarios.Provider>
     </>

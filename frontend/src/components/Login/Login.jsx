@@ -1,12 +1,15 @@
 import axios from "axios";
 import "./login.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { ProveedorUsuarios } from "../../context/UsuariosContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
+  const {autorizacion, setAutorizacion} = useContext(ProveedorUsuarios)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -16,11 +19,16 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        const usuarioIn = response.data.usuario;
-        const tokenIn = response.data.token;
 
-        localStorage.setItem("token", tokenIn);
-        localStorage.setItem("usuario", JSON.stringify(usuarioIn));
+        setAutorizacion(
+          {usuario: response.data.usuario,
+          token: response.data.token}
+        )
+        // const usuarioIn = response.data.usuario;
+        // const tokenIn = response.data.token;
+
+        localStorage.setItem("autorizacion", JSON.stringify(response.data));
+        // localStorage.setItem("usuario", JSON.stringify(usuarioIn));
 
         Swal.fire(
           {
@@ -31,8 +39,8 @@ const Login = () => {
             color: "grey",
           },
           setTimeout(() => {
-              window.location.href = "/";
-            }, 1200)
+            window.location.href = "/";
+          }, 1200)
         );
       }
     } catch (error) {

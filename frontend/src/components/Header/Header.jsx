@@ -8,7 +8,7 @@ import { ProveedorUsuarios } from "../../context/UsuariosContext";
 const Header = () => {
  const { logOut } = useContext(ProveedorUsuarios)
 
-  const usuarioIngresado = JSON.parse(localStorage.getItem("usuario"));
+  const usuarioIngresado = JSON.parse(localStorage.getItem("autorizacion"));
 
   return (
     <>
