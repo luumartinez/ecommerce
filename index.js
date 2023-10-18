@@ -18,6 +18,8 @@ app.use("/api", require('./routes/authRuta'));
 
 app.use("/api", require('./routes/rutasUsuarios'));
 
+app.use("/api/categorias", require('./routes/rutasCategorias'));
+
 app.get("/", (req, res) =>{
     res.send({
         message: "HOLA ECOMMERCE"
