@@ -15,10 +15,10 @@ const Rutas = () => {
         <Route path="/" element={<Inicio />} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/perfil" element={<RutasPrivadas />}>
-          <Route path="" element={<Perfil />} />
+          <Route path="usuario" element={<Perfil />} />
         </Route>
-        <Route path="/administracion" element={<RutasAdmin />}>
-          <Route path="" element={<Administracion />} />
+        <Route path="/perfil" element={<RutasAdmin />}>
+          <Route path="admin" element={<Administracion />} />
         </Route>
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<PaginaNoEncontrada />} />

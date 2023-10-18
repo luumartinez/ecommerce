@@ -9,11 +9,7 @@ const RutasAdmin = () => {
     const {autorizacion} = useContext(ProveedorUsuarios)
     useEffect(() =>{
         const verificarAuth = async () =>{
-            const response = await axios.get("http://localhost:8080/api/administracion",{
-                headers:{
-                    "Authorization": autorizacion?.token
-                }
-            })
+            const response = await axios.get("http://localhost:8080/api/administracion");
             if(response.data.ok){
                 setOk(true)
             }else{

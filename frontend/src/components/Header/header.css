@@ -25,3 +25,7 @@
     /* background-color: lightblue; */
     background: linear-gradient(to top, lightblue, rgb(175, 175, 175))
 }
+
+.dropdown-toggle{
+    border-bottom: none !important;
+}

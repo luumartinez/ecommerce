@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ProveedorUsuarios } from "../../context/UsuariosContext";
 
 const Header = () => {
- const { logOut } = useContext(ProveedorUsuarios)
+  const { logOut, autorizacion } = useContext(ProveedorUsuarios);
 
   const usuarioIngresado = JSON.parse(localStorage.getItem("autorizacion"));
 
@@ -34,8 +34,30 @@ const Header = () => {
                 <>
                   <li className="nav-item">
                     <NavLink className="nav-link" aria-current="page" to="/">
-                      Home
+                      Inicio
                     </NavLink>
+                  </li>
+                  <li className="nav-item dropdown">
+                    <NavLink
+                      className="nav-link dropdown-toggle"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {autorizacion?.usuario?.nombre}
+                    </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink className="nav-link" to={`/perfil/${autorizacion?.usuario?.rol === "admin" ? 'admin': 'usuario' }`}>
+                          Perfil
+                        </NavLink>
+                      </li>
+                      <li className="nav-link" onClick={logOut}>
+                        <div type="button" className="nav-link">
+                          Cerrar sesión
+                        </div>
+                      </li>
+                    </ul>
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/categoria">
@@ -46,14 +68,6 @@ const Header = () => {
                     <NavLink className="nav-link" to="/carrito">
                       Carrito (0)
                     </NavLink>
-                  </li>
-                  <li className="nav-item" onClick={logOut}>
-                  <div
-                      type="button"
-                      className="nav-link"
-                    >
-                      Log Out
-                    </div>
                   </li>
                 </>
               ) : (
@@ -85,37 +99,6 @@ const Header = () => {
                   </li>
                 </>
               )}
-              {/* <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li> */}
             </ul>
             {/* <form className="d-flex" role="search">
               <input
