@@ -1,9 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const {crearCategoria, editarCategoria} = require("../controllers/categoriasController");
+const {crearCategoria, editarCategoria, todasCategorias, verCategoria, eliminarCategoria} = require("../controllers/categoriasController");
 const { usuarioRequerido, rutasAdmin } = require('../middlewares/authMiddleware');
 
-router.post("/crearCategoria", usuarioRequerido, rutasAdmin, crearCategoria)
+router.get("/lista-categorias", todasCategorias)
+router.get("/ver-categoria/:slug", verCategoria)
 
-router.put("/editarCategoria/:id", usuarioRequerido, rutasAdmin, editarCategoria)
+router.post("/crear", usuarioRequerido, rutasAdmin, crearCategoria)
+
+router.put("/editar/:id", usuarioRequerido, rutasAdmin, editarCategoria)
+
+router.delete("/eliminar/:id", usuarioRequerido, rutasAdmin, eliminarCategoria)
+
 module.exports = router;
