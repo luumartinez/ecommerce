@@ -19,6 +19,7 @@ app.use("/api", require('./routes/authRuta'));
 app.use("/api", require('./routes/rutasUsuarios'));
 
 app.use("/api/categorias", require('./routes/rutasCategorias'));
+app.use("/api/productos", require('./routes/rutasProductos'));
 
 app.get("/", (req, res) =>{
     res.send({
