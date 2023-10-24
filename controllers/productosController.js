@@ -24,13 +24,17 @@ const crearProducto = async (req, res) => {
       case !categoria:
         return res
           .status(500)
-          .send({ error: "Ingrese el categoria del producto" });
+          .send({ error: "Ingrese la categoria del producto" });
       case !stock:
         return res.status(500).send({ error: "Ingrese el stock del producto" });
       case imagen && imagen.size > 1000000:
         return res
           .status(500)
           .send({ error: "El tamaño de la imagen excede el permitido" });
+          case !envio:
+        return res
+          .status(500)
+          .send({ error: "Seleccion si tiene envio" });
     }
 
     const producto = new ProductosModel({
@@ -43,10 +47,12 @@ const crearProducto = async (req, res) => {
     }
     await producto.save();
     res.status(201).send({
+      success: true,
       message: "producto creado con exito",
       producto,
     });
   } catch (error) {
+    console.log(error)
     res.status(500).send(error);
   }
 };

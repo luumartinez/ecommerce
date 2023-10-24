@@ -2,3 +2,18 @@
     background: linear-gradient(to bottom, lightblue, rgb(175, 175, 175));
     min-height: 70vh;
 }
+
+.perfilAdmin{
+    display: flex;
+    font-size: x-large;
+}
+
+.datosAdmin{
+    width: 50%;
+}
+
+.imgAdmin{
+    display: flex;
+    width: 25%;
+    justify-content: start;
+}

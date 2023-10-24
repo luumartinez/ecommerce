@@ -6,7 +6,7 @@ const productosSchema = new mongoose.Schema(
     slug: { type: String, required: true },
     descripcion: { type: String, required: true, min: 3, max: 80 },
     precio: { type: Number, required: true, min: 1 },
-    categoria: { type:mongoose.ObjectId , ref: 'categorias', required: true },
+    categoria: { type: mongoose.ObjectId , ref: 'categoria', required: true },
     stock: {type: Number, required: true},
     imagen: {data: Buffer, contentType: String},
     envio: {type: Boolean}

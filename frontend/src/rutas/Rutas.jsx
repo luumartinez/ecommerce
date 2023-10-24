@@ -7,9 +7,9 @@ import Perfil from "../pages/Perfil/Perfil";
 import RutasPrivadas from "./RutasPrivadas";
 import RutasAdmin from "./RutasAdmin";
 import Administracion from "../pages/Administracion/Administracion";
-import Productos from "../pages/Administracion/Productos";
-import Usuarios from "../pages/Administracion/Usuarios";
+import Usuarios from "../pages/Administracion/Usuarios/Usuarios";
 import Categorias from "../pages/Administracion/Categorias/Categorias";
+import Productos from "../pages/Administracion/Productos/Productos";
 
 const Rutas = () => {
   return (

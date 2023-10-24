@@ -44,7 +44,9 @@ const Categorias = () => {
                 <button type="submit" className="botonCrearCat">CREAR</button></p>
               </form>
               </div>
+
               <TablaCategorias />
+
             </div>
           </div>
         </main>

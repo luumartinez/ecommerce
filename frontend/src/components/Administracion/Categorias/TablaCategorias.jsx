@@ -49,17 +49,18 @@ const TablaCategorias = () => {
 
   return (
     <>
-      <table className="table text-center">
+    <div className="table-responsive">
+      <table className="tablaCat">
         <thead>
-          <tr>
-            <th scope="col">Nombre</th>
+          <tr className="theadCat">
+            <th className="thCat" scope="col">Nombre</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
           {categorias.map((categoria) => (
-            <tr key={categoria._id}>
-              <td>{categoria.nombre}</td>
+            <tr className="tbodyCat" key={categoria._id}>
+              <td className="tdCat">{categoria.nombre}</td>
               <td>
                 <button
                   onClick={() => {
@@ -71,12 +72,13 @@ const TablaCategorias = () => {
                 >
                   Editar
                 </button>
-                <button onClick={() => {eliminarCategoria(categoria._id)}}>Eliminar</button>
+                <button className="btnElimCat" onClick={() => {eliminarCategoria(categoria._id)}}>Eliminar</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
 
       <Modal centered show={showEditCat} onHide={handleCloseEditCat}>
         <Modal.Header closeButton>

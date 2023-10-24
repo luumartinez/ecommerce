@@ -27,11 +27,11 @@
 
 .botonCrearCat:hover {
   background-color: rgb(132, 34, 150);
-  color: grey;
+  color: rgb(212, 234, 242);
   transition: 0.5s ease-in-out;
 }
 
-.btnEditCat{
+.btnEditCat {
   background: rgb(170, 43, 193);
   border-radius: 5px;
   border: none;
@@ -41,6 +41,56 @@
 
 .btnEditCat:hover {
   background-color: rgb(132, 34, 150);
-  color: grey;
+  color: rgb(212, 234, 242);
   transition: 0.5s ease-in-out;
+}
+
+.btnElimCat {
+  background-color: rgb(216, 19, 19);
+  border-radius: 5px;
+  border: none;
+  line-height: 4vh;
+  color: rgb(221, 209, 209);
+}
+
+.btnElimCat:hover {
+  background-color: rgb(195, 20, 20);
+  color: white;
+  transition: 0.5s ease-in-out;
+}
+
+.tablaCat {
+  background-color: gray;
+  font-size: large;
+  border: none;
+  text-align: center;
+  width: 96%;
+  /* margin: 0 auto; */
+}
+
+.tbodyCat {
+  border-bottom: 2px solid lightblue;
+  color: #412d38;
+  line-height: 5.5vh;
+  align-items: center;
+}
+
+.tbodyCat:hover {
+  transition: 0.3s;
+  background-color: rgb(100, 96, 96);
+}
+
+.theadCat {
+  background-color: rgb(132, 34, 150);
+  color: lightblue;
+  line-height: 6vh;
+  border-bottom: 2px solid lightblue ;
+}
+
+.thCat{
+  border-right: 2px solid lightblue;
+}
+
+.tdCat{
+  border-right: 2px solid lightblue;
 }
