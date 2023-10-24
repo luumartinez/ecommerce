@@ -45,7 +45,8 @@ const editarCategoria = async (req, res) => {
     );
     res.status(200).send({
       message: "Categoria editada correctamente",
-      categoria,
+      success: true,
+      categoria
     });
   } catch (error) {
     res.status(500).send({ message: "Error al editar", error });
@@ -80,7 +81,7 @@ const eliminarCategoria = async (req, res) => {
   try {
     const { id } = req.params;
     await CategoriaModel.findByIdAndDelete(id);
-    res.status(200).send({ message: "Categoria eliminada" });
+    res.status(200).send({ message: "Categoria eliminada", success: true});
   } catch (error) {
     res.status(404).send({ message: "categoria no encotrada" });
   }

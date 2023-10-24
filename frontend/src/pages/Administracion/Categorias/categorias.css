@@ -1,0 +1,46 @@
+.mainCategorias {
+  background: linear-gradient(to bottom, lightblue, rgb(175, 175, 175));
+  min-height: 70vh;
+}
+
+.inputCrearCat {
+  width: 70%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-indent: 1%;
+}
+
+.inputCrearCat:focus {
+  border-color: gray;
+  box-shadow: 0 0 0 0.3vh rgba(128, 128, 128, 0.385);
+  outline: none;
+}
+
+.botonCrearCat {
+  background: rgb(170, 43, 193);
+  width: 25%;
+  border-radius: 5px;
+  border: none;
+  line-height: 4vh;
+  color: lightblue;
+}
+
+.botonCrearCat:hover {
+  background-color: rgb(132, 34, 150);
+  color: grey;
+  transition: 0.5s ease-in-out;
+}
+
+.btnEditCat{
+  background: rgb(170, 43, 193);
+  border-radius: 5px;
+  border: none;
+  line-height: 4vh;
+  color: lightblue;
+}
+
+.btnEditCat:hover {
+  background-color: rgb(132, 34, 150);
+  color: grey;
+  transition: 0.5s ease-in-out;
+}

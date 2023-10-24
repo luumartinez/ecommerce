@@ -23,17 +23,6 @@ const UsuariosContext = ({ children }) => {
     }
   }, []);
 
-
-  // useEffect(() => {
-  //   const usuarioIn = JSON.parse(localStorage.getItem("usuario"));
-  //   const tokenIn = localStorage.getItem("token");
-  //   if (usuarioIn){
-  //     setAutorizacion({
-  //       ...autorizacion, usuario: usuarioIn, token: tokenIn
-  //     })
-  //   }
-    
-  // }, []);
   
   axios.defaults.headers.common['Authorization'] = autorizacion?.token
   

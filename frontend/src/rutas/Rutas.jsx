@@ -7,6 +7,9 @@ import Perfil from "../pages/Perfil/Perfil";
 import RutasPrivadas from "./RutasPrivadas";
 import RutasAdmin from "./RutasAdmin";
 import Administracion from "../pages/Administracion/Administracion";
+import Productos from "../pages/Administracion/Productos";
+import Usuarios from "../pages/Administracion/Usuarios";
+import Categorias from "../pages/Administracion/Categorias/Categorias";
 
 const Rutas = () => {
   return (
@@ -19,6 +22,9 @@ const Rutas = () => {
         </Route>
         <Route path="/perfil" element={<RutasAdmin />}>
           <Route path="admin" element={<Administracion />} />
+          <Route path="admin/categorias" element={<Categorias />} />
+          <Route path="admin/productos" element={<Productos />} />
+          <Route path="admin/usuarios" element={<Usuarios />} />
         </Route>
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<PaginaNoEncontrada />} />
