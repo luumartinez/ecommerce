@@ -78,9 +78,10 @@ const verProducto = async (req, res) => {
     const producto = await ProductosModel.findOne({ slug: req.params.slug })
       .select("-imagen")
       .populate("categoria");
-    res.status(200).send({ message: "producto encontrado", producto });
+    res.status(200).send({succes:true, message: "producto encontrado", producto });
   } catch (error) {
     res.status(500).send(error);
+    console.log(error)
   }
 };
 
@@ -140,6 +141,7 @@ const editarProducto = async (req, res) => {
     }
     await producto.save();
     res.status(201).send({
+      success: true,
       message: "producto editado con exito",
       producto,
     });
@@ -151,7 +153,7 @@ const editarProducto = async (req, res) => {
 const eliminarProducto = async (req, res) => {
   try {
     await ProductosModel.findByIdAndDelete(req.params.pid).select("-imagen");
-    res.status(200).send({ message: "producto eliminado" });
+    res.status(200).send({success: true, message: "producto eliminado" });
   } catch (error) {
     console.log(error);
   }

@@ -10,6 +10,7 @@ import Administracion from "../pages/Administracion/Administracion";
 import Usuarios from "../pages/Administracion/Usuarios/Usuarios";
 import Categorias from "../pages/Administracion/Categorias/Categorias";
 import Productos from "../pages/Administracion/Productos/Productos";
+import ProductoIndividual from "../components/Administracion/Productos/ProductoIndividual";
 
 const Rutas = () => {
   return (
@@ -24,6 +25,7 @@ const Rutas = () => {
           <Route path="admin" element={<Administracion />} />
           <Route path="admin/categorias" element={<Categorias />} />
           <Route path="admin/productos" element={<Productos />} />
+          <Route path="admin/productos/:slug" element={<ProductoIndividual />} />
           <Route path="admin/usuarios" element={<Usuarios />} />
         </Route>
         <Route path="/registro" element={<Registro />} />

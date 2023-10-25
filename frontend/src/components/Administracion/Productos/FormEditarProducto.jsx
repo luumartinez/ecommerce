@@ -1,22 +1,24 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProveedorCategorias } from "../../../context/CategoriasContext";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Form } from "react-bootstrap";
 import { ProveedorProductos } from "../../../context/ProductosContext";
-const FormCrearProducto = ({ handleClose }) => {
+
+const FormEditarProducto = ({ handleCloseEditProd, producto }) => {
   const { categorias } = useContext(ProveedorCategorias);
-  const {listaProductos } = useContext(ProveedorProductos)
+  const { listaProductos } = useContext(ProveedorProductos);
 
-  const [categoria, setCategoria] = useState("");
+  const [categoria, setCategoria] = useState(producto.categoria._id);
   const [imagen, setImagen] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [precio, setPrecio] = useState("");
-  const [stock, setStock] = useState("");
-  const [envio, setEnvio] = useState("");
+  const [nombre, setNombre] = useState(producto.nombre);
+  const [descripcion, setDescripcion] = useState(producto.descripcion);
+  const [precio, setPrecio] = useState(producto.precio);
+  const [stock, setStock] = useState(producto.stock);
+  const [envio, setEnvio] = useState(producto.envio);
+  const [id, setId] = useState(producto._id);
 
-  const handleCreate = async (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
     try {
       const dataProducto = new FormData();
@@ -25,24 +27,24 @@ const FormCrearProducto = ({ handleClose }) => {
       dataProducto.append("precio", precio);
       dataProducto.append("categoria", categoria);
       dataProducto.append("stock", stock);
-      dataProducto.append("imagen", imagen);
+      imagen && dataProducto.append("imagen", imagen);
       dataProducto.append("envio", JSON.parse(envio));
-      const { data } = await axios.post(
-        "http://localhost:8080/api/productos/crear",
+      const { data } = await axios.put(
+        `http://localhost:8080/api/productos/editar/${id}`,
         dataProducto
       );
       if (data?.success) {
         Swal.fire({
-          text: "Creado",
+          text: "Editado",
           icon: "success",
           showConfirmButton: false,
           timer: 1500,
         });
-        handleClose();
+        handleCloseEditProd();
         listaProductos()
       } else {
         Swal.fire({
-          text: "no se pudo crear",
+          text: "No se pudo editar",
           icon: "error",
           timer: 2000,
           showConfirmButton: false,
@@ -51,7 +53,7 @@ const FormCrearProducto = ({ handleClose }) => {
     } catch (error) {
       console.log(error);
       Swal.fire({
-        text: "no se pudo crear",
+        text: "No se pudo editar",
         icon: "error",
         timer: 2000,
         showConfirmButton: false,
@@ -66,7 +68,7 @@ const FormCrearProducto = ({ handleClose }) => {
           setCategoria(e.target.value);
         }}
         htmlFor="categoria"
-        required
+        value={categoria}
       >
         {categorias?.map((cat) => (
           <option name="categoria" key={cat._id} value={cat._id}>
@@ -82,11 +84,11 @@ const FormCrearProducto = ({ handleClose }) => {
           accept="image/*"
           id="formFile"
           onChange={(e) => setImagen(e.target.files[0])}
-          required
         />
       </div>
+
       <div className="mb-3">
-        {imagen && (
+        {imagen ? (
           <div className="text-center">
             <img
               src={URL.createObjectURL(imagen)}
@@ -95,26 +97,40 @@ const FormCrearProducto = ({ handleClose }) => {
               className="img img-responsive"
             />
           </div>
+        ) : (
+          <div className="text-center">
+            <img
+              src={`http://localhost:8080/api/productos/img/${id}`}
+              alt="img prod"
+              height={"100px"}
+              className="img img-responsive"
+            />
+          </div>
         )}
       </div>
+
       <div className="mb-3">
         <input
           className="form-control"
           type="text"
           value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          // onChange={(e) => setNombre(e.target.value)}
+          onChange={(e) => {
+            setNombre(e.target.value);
+          }}
           placeholder="Ingrese el nombre"
-          required
         />
       </div>
+
       <div className="mb-3">
         <input
           className="form-control"
           type="text"
           value={descripcion}
-          onChange={(e) => setDescripcion(e.target.value)}
+          onChange={(e) => {
+            setDescripcion(e.target.value);
+          }}
           placeholder="Descripcion del producto"
-          required
         />
       </div>
       <div className="mb-3">
@@ -122,9 +138,10 @@ const FormCrearProducto = ({ handleClose }) => {
           className="form-control"
           type="number"
           value={precio}
-          onChange={(e) => setPrecio(e.target.value)}
+          onChange={(e) => {
+            setPrecio(e.target.value);
+          }}
           placeholder="$"
-          required
         />
       </div>
       <div className="mb-3">
@@ -132,19 +149,21 @@ const FormCrearProducto = ({ handleClose }) => {
           className="form-control"
           type="number"
           value={stock}
-          onChange={(e) => setStock(e.target.value)}
+          onChange={(e) => {
+            setStock(e.target.value);
+          }}
           placeholder="Stock disponible"
-          required
         />
       </div>
       <div className="mb-3">
         <Form.Select
           htmlFor="envio"
           className="form-select form-control"
+          // onChange={handleChange}
           onChange={(e) => {
             setEnvio(e.target.value);
           }}
-          required
+          value={envio ? "true" : "false"}
         >
           <option>Envio</option>
           <option name="envio" value="true">
@@ -156,12 +175,12 @@ const FormCrearProducto = ({ handleClose }) => {
         </Form.Select>
       </div>
       <div className="mb-3 d-flex justify-content-center">
-        <button type="submit" className="btnFormProd w-75" onClick={handleCreate}>
-          CREAR PRODUCTO
+        <button type="submit" onClick={handleEdit} className="btnFormProd w-75">
+          EDITAR PRODUCTO
         </button>
       </div>
     </>
   );
 };
 
-export default FormCrearProducto;
+export default FormEditarProducto;

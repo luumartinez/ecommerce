@@ -14,6 +14,6 @@ router.get("/img/:pid", verImgProducto)
 
 router.put("/editar/:pid", usuarioRequerido, rutasAdmin, formidable(), editarProducto)
 
-router.delete("eliminar/:pid", eliminarProducto)
+router.delete("/eliminar/:pid", eliminarProducto)
 
 module.exports = router
