@@ -31,10 +31,8 @@ const crearProducto = async (req, res) => {
         return res
           .status(500)
           .send({ error: "El tamaño de la imagen excede el permitido" });
-          case !envio:
-        return res
-          .status(500)
-          .send({ error: "Seleccion si tiene envio" });
+      case !envio:
+        return res.status(500).send({ error: "Seleccion si tiene envio" });
     }
 
     const producto = new ProductosModel({
@@ -52,7 +50,7 @@ const crearProducto = async (req, res) => {
       producto,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).send(error);
   }
 };
@@ -60,16 +58,18 @@ const crearProducto = async (req, res) => {
 const listaProductos = async (req, res) => {
   try {
     const productos = await ProductosModel.find({})
+      .populate('categoria')
       .select("-imagen")
       .limit(12)
-      .populate("categoria")
       .sort({ createdAt: -1 });
     res.status(200).send({
+      success: true,
       message: `Mostrando el total de ${productos.length} productos`,
-      productos,
+      productos
     });
   } catch (error) {
     res.status(500).send(error);
+    console.log(error);
   }
 };
 

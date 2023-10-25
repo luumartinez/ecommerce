@@ -58,7 +58,7 @@ const FormCrearProducto = ({ handleClose }) => {
   return (
     <>
       <Form.Select
-        className="form-select mb-3"
+        className="form-select form-control mb-3"
         onChange={(e) => {
           setCategoria(e.target.value);
         }}
@@ -131,7 +131,7 @@ const FormCrearProducto = ({ handleClose }) => {
       <div className="mb-3">
         <Form.Select
           htmlFor="envio"
-          className="form-select"
+          className="form-select form-control"
           onChange={(e) => {
             setEnvio(e.target.value);
           }}
